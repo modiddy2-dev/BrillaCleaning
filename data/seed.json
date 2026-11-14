@@ -1,0 +1,591 @@
+{
+  "business": {
+    "name": "Brilla Cleaning",
+    "city": "Dubuque, IA",
+    "office": "196 Bluff St, Dubuque, IA 52001",
+    "timezone": "America/Chicago",
+    "colors": {
+      "red": "#BE1E2D",
+      "black": "#231F20",
+      "background": "#FFFFFF"
+    }
+  },
+  "settings": {
+    "hourlyWage": 15,
+    "mileageRatePerMile": 0.5,
+    "workdayStart": "09:00",
+    "reminderTime": "19:00",
+    "reminderText": {
+      "en": "Girls will be over tomorrow morning",
+      "es": "Las muchachas irán mañana en la mañana"
+    },
+    "defaultLanguage": "en"
+  },
+  "cleaners": [
+    {
+      "name": "Leah",
+      "legalName": "Corrinne Diaz",
+      "role": "cleaner",
+      "paidWages": true,
+      "paidVia": "Venmo",
+      "gasReimbursement": false,
+      "notes": "All jobs; does Airbnb turnovers alone"
+    },
+    {
+      "name": "Nancy",
+      "role": "cleaner",
+      "paidWages": true,
+      "paidVia": "Cash App",
+      "gasReimbursement": true,
+      "notes": "All jobs except Airbnb turnovers"
+    },
+    {
+      "name": "Giselle",
+      "role": "owner",
+      "paidWages": false,
+      "paidVia": null,
+      "gasReimbursement": false,
+      "notes": "Co-owner (Gabriel's wife). Tuesdays at McCoy only. No wage, not a labor cost."
+    }
+  ],
+  "clients": [
+    {
+      "name": "McCoy",
+      "address": "1834 Creek Wood Dr",
+      "city": "Dubuque, IA",
+      "frequency": "weekly",
+      "day": "Tue",
+      "time": "09:00-13:00",
+      "team": [
+        "Giselle",
+        "Leah",
+        "Nancy"
+      ],
+      "reminderContact": "Greg McCoy",
+      "price": 360,
+      "biweeklyWeek": null
+    },
+    {
+      "name": "Hiawatha",
+      "address": "1415 Hiawatha",
+      "city": "East Dubuque, IL (unconfirmed)",
+      "frequency": "biweekly",
+      "day": "Wed",
+      "time": "09:00-11:00",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "reminderContact": "Emily Mccollugh",
+      "price": 120,
+      "biweeklyWeek": "A"
+    },
+    {
+      "name": "Terry & Angie",
+      "address": "1036 W 3rd St",
+      "city": "Dubuque, IA",
+      "frequency": "biweekly",
+      "day": "Wed",
+      "time": "11:15-13:15",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "reminderContact": "Angie Mozena",
+      "price": 100,
+      "biweeklyWeek": "A"
+    },
+    {
+      "name": "Melrose",
+      "address": "1075 Melrose",
+      "city": "Dubuque, IA",
+      "frequency": "biweekly",
+      "day": "Thu",
+      "time": "09:00-11:00",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "reminderContact": "Melrose Cleaning",
+      "price": 120,
+      "biweeklyWeek": "A"
+    },
+    {
+      "name": "Shady Oaks",
+      "address": "1062 Shady Oaks",
+      "city": "Dubuque, IA",
+      "frequency": "biweekly",
+      "day": "Thu",
+      "time": "11:15-13:15",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "reminderContact": "Jeffrey Boudin",
+      "price": 120,
+      "biweeklyWeek": "A"
+    },
+    {
+      "name": "Malm",
+      "address": "3110 Castle Woods",
+      "city": "Dubuque, IA",
+      "frequency": "biweekly",
+      "day": "Wed",
+      "time": "09:00-11:00",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "reminderContact": "Greg Malm",
+      "price": null,
+      "biweeklyWeek": "B"
+    },
+    {
+      "name": "Cavanaugh",
+      "address": "565 Fenelon",
+      "city": "Dubuque, IA",
+      "frequency": "biweekly",
+      "day": "Wed",
+      "time": "11:30-13:30",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "reminderContact": "Brad & Jessica Cavanaugh",
+      "price": 120,
+      "biweeklyWeek": "B"
+    },
+    {
+      "name": "Beacon Hill",
+      "address": "2418 Beacon Hill",
+      "city": "Dubuque, IA",
+      "frequency": "biweekly",
+      "day": "Thu",
+      "time": "09:00-11:00",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "reminderContact": "Karen Hortmann",
+      "price": 100,
+      "biweeklyWeek": "B"
+    },
+    {
+      "name": "Beth & Darrin's (Fischer)",
+      "address": "938 Barbaralee Dr",
+      "city": "Dubuque, IA",
+      "frequency": "biweekly",
+      "day": "Thu",
+      "time": "11:00-12:30",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "reminderContact": "Beth Fischer",
+      "price": 90,
+      "biweeklyWeek": "B"
+    },
+    {
+      "name": "Aranzatxa",
+      "address": "1872 Carter Ct",
+      "city": "Dubuque, IA",
+      "frequency": "on-request",
+      "day": "Fri (usually, ~monthly)",
+      "time": "09:00-11:00",
+      "team": [
+        "Giselle",
+        "Leah",
+        "Nancy"
+      ],
+      "reminderContact": null,
+      "price": null,
+      "biweeklyWeek": null
+    }
+  ],
+  "rentals": [
+    {
+      "name": "The Dubuque House (Airbnb)",
+      "address": "330 W 5th St, Dubuque, IA",
+      "platform": "Airbnb",
+      "turnoverTime": "11:00",
+      "team": [
+        "Leah"
+      ],
+      "pricing": {
+        "base": 55,
+        "over3Nights": 75
+      },
+      "reminders": false
+    },
+    {
+      "name": "Southridge (Territory)",
+      "address": "11 Southridge Dr, Galena, IL",
+      "manager": "Galena Reservations",
+      "price": 225,
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "reminders": false
+    }
+  ],
+  "weekAexample": "2026-11-02",
+  "weekBexample": "2026-11-09",
+  "jobs_2026_11_02": [
+    {
+      "date": "2026-11-02",
+      "start": "09:00",
+      "end": "13:00",
+      "property": "Southridge (Territory)",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "type": "turnover",
+      "price": 225,
+      "note": "Checkout Sun Nov 1; next arrival Fri Nov 6"
+    },
+    {
+      "date": "2026-11-03",
+      "start": "09:00",
+      "end": "13:00",
+      "property": "McCoy",
+      "team": [
+        "Giselle",
+        "Leah",
+        "Nancy"
+      ],
+      "type": "recurring",
+      "price": 360
+    },
+    {
+      "date": "2026-11-04",
+      "start": "09:00",
+      "end": "11:00",
+      "property": "Hiawatha",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "type": "recurring",
+      "price": 120
+    },
+    {
+      "date": "2026-11-04",
+      "start": "11:15",
+      "end": "13:15",
+      "property": "Terry & Angie",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "type": "recurring",
+      "price": 100
+    },
+    {
+      "date": "2026-11-05",
+      "start": "09:00",
+      "end": "11:00",
+      "property": "Melrose",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "type": "recurring",
+      "price": 120
+    },
+    {
+      "date": "2026-11-05",
+      "start": "11:15",
+      "end": "13:15",
+      "property": "Shady Oaks",
+      "team": [
+        "Leah",
+        "Nancy"
+      ],
+      "type": "recurring",
+      "price": 120
+    },
+    {
+      "date": "2026-11-08",
+      "start": "11:00",
+      "end": "13:00",
+      "property": "The Dubuque House (Airbnb)",
+      "team": [
+        "Leah"
+      ],
+      "type": "turnover",
+      "price": 55,
+      "note": "Latham checks out (2 nights); next arrival Thu Nov 12; length estimated at 2h"
+    }
+  ],
+  "expectedTotals_2026_11_02": {
+    "revenue": 1100,
+    "cleanerHours": 38,
+    "paidHours": 34,
+    "labor": 510,
+    "profitBeforeGas": 590,
+    "nancyGasMiles": 86.3,
+    "nancyGas": 43.15,
+    "profitAfterGas": 546.85,
+    "pay": {
+      "Leah": 270,
+      "Nancy": 283.15,
+      "Giselle": "owner"
+    },
+    "totalPay": 553.15
+  },
+  "gasRoutes_2026_11_02": {
+    "note": "Road miles via OpenStreetMap/OSRM; office -> jobs in order -> office",
+    "Mon": [
+      [
+        "Office",
+        "Southridge",
+        27.0
+      ],
+      [
+        "Southridge",
+        "Office",
+        26.9
+      ]
+    ],
+    "Tue": [
+      [
+        "Office",
+        "McCoy",
+        4.0
+      ],
+      [
+        "McCoy",
+        "Office",
+        3.9
+      ]
+    ],
+    "Wed": [
+      [
+        "Office",
+        "Hiawatha",
+        8.8
+      ],
+      [
+        "Hiawatha",
+        "Terry & Angie",
+        9.4
+      ],
+      [
+        "Terry & Angie",
+        "Office",
+        0.6
+      ]
+    ],
+    "Thu": [
+      [
+        "Office",
+        "Melrose",
+        0.9
+      ],
+      [
+        "Melrose",
+        "Shady Oaks",
+        2.8
+      ],
+      [
+        "Shady Oaks",
+        "Office",
+        2.0
+      ]
+    ]
+  },
+  "rentalStays": {
+    "airbnb": [
+      {
+        "guest": "Miller",
+        "arrive": "2026-10-30",
+        "depart": "2026-11-01"
+      },
+      {
+        "guest": "Latham",
+        "arrive": "2026-11-06",
+        "depart": "2026-11-08"
+      },
+      {
+        "guest": "Dreckman-Sigmund",
+        "arrive": "2026-11-12",
+        "depart": "2026-11-15"
+      },
+      {
+        "guest": "Powell",
+        "arrive": "2026-11-16",
+        "depart": "2026-11-19"
+      },
+      {
+        "guest": "Rahman",
+        "arrive": "2026-11-23",
+        "depart": "2026-11-24"
+      },
+      {
+        "guest": "Deegan",
+        "arrive": "2026-11-25",
+        "depart": "2026-11-29"
+      },
+      {
+        "guest": "Franch De Armas",
+        "arrive": "2026-12-13",
+        "depart": "2026-12-18"
+      }
+    ],
+    "southridge": [
+      {
+        "arrive": "2026-10-30",
+        "depart": "2026-11-01"
+      },
+      {
+        "arrive": "2026-11-06",
+        "depart": "2026-11-08",
+        "note": "No cleaning Nov 8/9 per Gabriel"
+      },
+      {
+        "arrive": "2026-11-13",
+        "depart": "2026-11-15"
+      },
+      {
+        "arrive": "2026-11-20",
+        "depart": "2026-11-22"
+      },
+      {
+        "arrive": "2026-12-04",
+        "depart": "2026-12-06"
+      },
+      {
+        "arrive": "2026-12-11",
+        "depart": "2026-12-13"
+      },
+      {
+        "arrive": "2026-12-19",
+        "depart": "2026-12-21"
+      },
+      {
+        "arrive": "2026-12-25",
+        "depart": "2026-12-27",
+        "note": "Same-day turnover Dec 27 (show red)"
+      },
+      {
+        "arrive": "2026-12-27",
+        "depart": "2026-12-30"
+      },
+      {
+        "arrive": "2026-12-31",
+        "depart": "2027-01-03"
+      },
+      {
+        "arrive": "2027-01-08",
+        "depart": "2027-01-10"
+      }
+    ]
+  },
+  "calendarExceptions": [
+    {
+      "date": "2026-11-25",
+      "change": "Malm cancelled; Beth & Darrin's takes the 9:00 slot; Cavanaugh stays 11:30; no reminder to Greg Malm"
+    },
+    {
+      "date": "2026-11-26",
+      "change": "Thanksgiving: Beacon Hill (9-11) and Beth's (11-12:30) still on calendar, unconfirmed"
+    }
+  ],
+  "wagePayments": [
+    {
+      "date": "2026-08",
+      "to": "Leah (Corrinne Diaz)",
+      "via": "Venmo",
+      "amount": 1112.5,
+      "note": "monthly total"
+    },
+    {
+      "date": "2026-09",
+      "to": "Leah (Corrinne Diaz)",
+      "via": "Venmo",
+      "amount": 1282.5,
+      "note": "monthly total"
+    },
+    {
+      "date": "2026-10",
+      "to": "Leah (Corrinne Diaz)",
+      "via": "Venmo",
+      "amount": 1382.5,
+      "note": "monthly total"
+    },
+    {
+      "date": "2026-08-12",
+      "to": "Ana Karina Cuellar-Montes",
+      "via": "Venmo",
+      "amount": 50
+    },
+    {
+      "date": "2026-09-18",
+      "to": "Nancy",
+      "via": "Cash App",
+      "amount": 317.5
+    },
+    {
+      "date": "2026-09-25",
+      "to": "Nancy",
+      "via": "Cash App",
+      "amount": 265
+    },
+    {
+      "date": "2026-10-02",
+      "to": "Nancy",
+      "via": "Cash App",
+      "amount": 167.5
+    },
+    {
+      "date": "2026-10-03",
+      "to": "Nancy",
+      "via": "Cash App",
+      "amount": 200
+    },
+    {
+      "date": "2026-10-09",
+      "to": "Nancy",
+      "via": "Cash App",
+      "amount": 190
+    },
+    {
+      "date": "2026-10-15",
+      "to": "Nancy",
+      "via": "Cash App",
+      "amount": 50
+    },
+    {
+      "date": "2026-10-16",
+      "to": "Nancy",
+      "via": "Cash App",
+      "amount": 250
+    },
+    {
+      "date": "2026-10-23",
+      "to": "Nancy",
+      "via": "Cash App",
+      "amount": 280
+    },
+    {
+      "date": "2026-10-30",
+      "to": "Nancy",
+      "via": "Cash App",
+      "amount": 300
+    }
+  ],
+  "wageTotals": {
+    "venmo": 3827.5,
+    "cashAppNancy": 2020.0
+  },
+  "openItems": [
+    "Price for Malm not set",
+    "Price for Aranzatxa not set",
+    "Hiawatha city: geocoded only as 1415 Hiawatha Dr, East Dubuque IL; confirm",
+    "Airbnb turnover length unknown; 2h estimate used for labor",
+    "Street suffixes for 1834 Creek Wood Dr (geocoded as Creekwood), 1075 Melrose, 1062 Shady Oaks unconfirmed",
+    "Thanksgiving Nov 26 jobs unconfirmed"
+  ]
+}

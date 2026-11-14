@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Cleaner {
+  id               String  @id
+  name             String  @unique
+  legalName        String?
+  role             String
+  paidWages        Boolean
+  paidVia          String?
+  gasReimbursement Boolean
+  notes            String?
+}
+
+model Client {
+  id              String  @id
+  name            String
+  address         String
+  city            String
+  frequency       String
+  day             String
+  time            String
+  team            String
+  reminderContact String?
+  reminderPhone   String?
+  price           Float?
+  biweeklyWeek    String?
+  active          Boolean @default(true)
+}
+
+model Rental {
+  id           String  @id
+  key          String  @unique
+  name         String
+  address      String
+  platform     String?
+  manager      String?
+  price        Float?
+  basePrice    Float?
+  over3Nights  Float?
+  turnoverTime String?
+  team         String
+  reminders    Boolean
+  stays        Stay[]
+}
+
+model Stay {
+  id         String  @id
+  rentalId   String
+  rental     Rental  @relation(fields: [rentalId], references: [id], onDelete: Cascade)
+  guest      String?
+  arrive     String
+  depart     String
+  noCleaning Boolean @default(false)
+  note       String?
+}
+
+model ManualJob {
+  id          String  @id
+  date        String
+  start       String
+  end         String
+  property    String
+  address     String
+  team        String
+  type        String
+  price       Float?
+  note        String?
+  sameDay     Boolean @default(false)
+  unconfirmed Boolean @default(false)
+  cancelled   Boolean @default(false)
+}
+
+model WagePayment {
+  id     String  @id
+  date   String
+  payee  String
+  via    String
+  amount Float
+  note   String?
+}
+
+model OpenItem {
+  id   String @id
+  sort Int
+  text String
+}
+
+model Preference {
+  userKey String @id
+  lang    String
+}
+
+model Session {
+  id          String   @id
+  tokenHash   String   @unique
+  role        String
+  userKey     String
+  cleanerName String?
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+}
+
+model AuthAttempt {
+  id        String   @id
+  bucket    String
+  success   Boolean
+  createdAt DateTime @default(now())
+
+  @@index([bucket, createdAt])
+}
+
+model DistanceCache {
+  id    String @id
+  pair  String @unique
+  miles Float
+}
+
+model Passkey {
+  id           String   @id
+  userKey      String
+  role         String
+  cleanerName  String?
+  credentialId String   @unique
+  publicKey    String
+  counter      Int
+  transports   String?
+  createdAt    DateTime @default(now())
+
+  @@index([userKey])
+}
+
+model WebAuthnChallenge {
+  id          String   @id
+  challenge   String
+  kind        String
+  userKey     String?
+  role        String?
+  cleanerName String?
+  expiresAt   DateTime
+
+  @@index([expiresAt])
+}

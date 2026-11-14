@@ -1,0 +1,19 @@
+{
+  "id": "/cleaner",
+  "name": "Brilla Cleaning",
+  "short_name": "Brilla Cleaner",
+  "description": "Cleaner app for Brilla Cleaning. Your jobs and your pay only.",
+  "start_url": "/cleaner",
+  "scope": "/cleaner",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c0f17",
+  "theme_color": "#0c0f17",
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

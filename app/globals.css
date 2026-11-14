@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #0c0f17;
+  color: #f1f5f9;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.glass-panel {
+  background: rgba(20, 26, 41, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid #2a3449;
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #f5edd6 0%, #d4af37 60%, #b89628 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
