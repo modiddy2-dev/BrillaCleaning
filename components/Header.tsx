@@ -5,7 +5,7 @@ import type { Lang } from "@/lib/rules";
 
 export function Header({ lang, eyebrow, logoutLabel }: { lang: Lang; eyebrow?: string; logoutLabel?: string }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-dark-border px-4 py-3 shadow-2xl glass-panel lg:px-8">
+    <header className="safe-header sticky top-0 z-40 border-b border-dark-border shadow-2xl glass-panel">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3">
         <div className="min-w-0">
           <BrillaLockup />

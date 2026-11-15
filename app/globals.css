@@ -2,11 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  /* Keep the PWA under the notch while leaving room for the home indicator. */
+  min-height: 100%;
+  min-height: 100dvh;
+}
+
 body {
   background: #0c0f17;
   color: #f1f5f9;
-  min-height: 100vh;
+  min-height: 100%;
+  min-height: 100dvh;
   overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Sticky header clears the status bar / Dynamic Island when viewport-fit=cover. */
+.safe-header {
+  padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  padding-bottom: 0.75rem;
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+}
+
+@media (min-width: 1024px) {
+  .safe-header {
+    padding-right: max(2rem, env(safe-area-inset-right, 0px));
+    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+  }
 }
 
 .glass-panel {
