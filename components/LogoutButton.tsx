@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export function LogoutButton({ label }: { label: string }) {
+export function LogoutButton({ label, fullWidth = false }: { label: string; fullWidth?: boolean }) {
   const [pending, setPending] = useState(false);
 
   async function logout() {
@@ -18,7 +18,6 @@ export function LogoutButton({ label }: { label: string }) {
     } catch {
       // Still leave the app; cookie clear may have partially applied.
     }
-    // Full navigation avoids stale client/PWA shell state after logout.
     window.location.replace("/");
   }
 
@@ -27,7 +26,7 @@ export function LogoutButton({ label }: { label: string }) {
       type="button"
       disabled={pending}
       aria-busy={pending}
-      className="min-h-11 whitespace-nowrap rounded-xl border border-dark-border bg-dark-elevated px-3 py-2 text-sm font-semibold text-slate-200 disabled:opacity-60"
+      className={`relative z-10 min-h-12 touch-manipulation whitespace-nowrap rounded-xl border border-dark-border bg-dark-elevated px-4 py-3 text-sm font-semibold text-slate-200 disabled:opacity-60 ${fullWidth ? "w-full" : ""}`}
       onClick={logout}
     >
       {label}

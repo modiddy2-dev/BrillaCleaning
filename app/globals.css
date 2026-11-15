@@ -17,9 +17,13 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* Sticky header clears the status bar / Dynamic Island when viewport-fit=cover. */
+/*
+ * Sticky header clears the status bar / Dynamic Island when viewport-fit=cover.
+ * Extra 0.5rem below the inset keeps controls out of the iOS tap dead-zone.
+ * Solid background (no backdrop-filter) — Safari can swallow taps through blur.
+ */
 .safe-header {
-  padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+  padding-top: calc(env(safe-area-inset-top, 0px) + 0.75rem);
   padding-right: max(1rem, env(safe-area-inset-right, 0px));
   padding-bottom: 0.75rem;
   padding-left: max(1rem, env(safe-area-inset-left, 0px));
