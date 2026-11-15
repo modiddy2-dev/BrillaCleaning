@@ -6,9 +6,10 @@ import "./globals.css";
 const cinzel = Cinzel({ subsets: ["latin"], weight: ["500", "700", "900"], variable: "--font-cinzel" });
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-jakarta" });
 
+const iconVersion = "v2";
 const icons = [
-  { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
-  { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+  { url: `/icons/icon-192.png?${iconVersion}`, sizes: "192x192", type: "image/png" },
+  { url: `/icons/icon-512.png?${iconVersion}`, sizes: "512x512", type: "image/png" },
 ];
 
 export const metadata: Metadata = {
@@ -18,7 +19,10 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   robots: { index: false, follow: false },
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Brilla" },
-  icons: { icon: icons, apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
+  icons: {
+    icon: icons,
+    apple: [{ url: `/icons/apple-touch-icon.png?${iconVersion}`, sizes: "180x180", type: "image/png" }],
+  },
 };
 
 export const viewport: Viewport = {

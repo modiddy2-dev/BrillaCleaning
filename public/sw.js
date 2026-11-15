@@ -1,5 +1,15 @@
-const CACHE = "brilla-shell-v1";
-const SHELL = ["/", "/owner/login", "/cleaner/login", "/manifest.webmanifest", "/owner.webmanifest", "/cleaner.webmanifest", "/icons/icon-192.png", "/icons/icon-512.png", "/icons/apple-touch-icon.png"];
+const CACHE = "brilla-shell-v2";
+const SHELL = [
+  "/",
+  "/owner/login",
+  "/cleaner/login",
+  "/manifest.webmanifest",
+  "/owner.webmanifest",
+  "/cleaner.webmanifest",
+  "/icons/icon-192.png?v2",
+  "/icons/icon-512.png?v2",
+  "/icons/apple-touch-icon.png?v2",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
