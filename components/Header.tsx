@@ -5,9 +5,9 @@ import type { Lang } from "@/lib/rules";
 
 export function Header({ lang, eyebrow, logoutLabel }: { lang: Lang; eyebrow?: string; logoutLabel?: string }) {
   return (
-    <header className="safe-header sticky top-0 z-50 border-b border-dark-border bg-dark-surface">
-      <div className="mx-auto flex max-w-7xl flex-col gap-3">
-        <div className="flex min-w-0 items-start justify-between gap-3">
+    <>
+      <header className="safe-header sticky z-50 border-b border-dark-border bg-dark-surface">
+        <div className="mx-auto flex max-w-7xl items-start justify-between gap-3">
           <div className="min-w-0">
             <BrillaLockup />
             {eyebrow ? <p className="mt-1 text-xs text-slate-400">{eyebrow}</p> : null}
@@ -21,12 +21,19 @@ export function Header({ lang, eyebrow, logoutLabel }: { lang: Lang; eyebrow?: s
             ) : null}
           </div>
         </div>
-        {logoutLabel ? (
-          <div className="relative z-10 sm:hidden">
+      </header>
+      {/*
+        Mobile Log out lives in normal document flow (not sticky).
+        If the sticky bar is still clipped by the status bar, this stays on-screen
+        and scrolls with the page — no need to scroll "up past zero".
+      */}
+      {logoutLabel ? (
+        <div className="border-b border-dark-border bg-dark-surface px-4 py-3 sm:hidden">
+          <div className="mx-auto max-w-7xl">
             <LogoutButton label={logoutLabel} fullWidth />
           </div>
-        ) : null}
-      </div>
-    </header>
+        </div>
+      ) : null}
+    </>
   );
 }

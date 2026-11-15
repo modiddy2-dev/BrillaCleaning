@@ -1,4 +1,4 @@
-const CACHE = "brilla-shell-v2";
+const CACHE = "brilla-shell-v3";
 const SHELL = [
   "/",
   "/owner/login",

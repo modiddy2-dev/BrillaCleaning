@@ -18,7 +18,8 @@ export const metadata: Metadata = {
   applicationName: "Brilla Cleaning",
   manifest: "/manifest.webmanifest",
   robots: { index: false, follow: false },
-  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Brilla" },
+  // "black" keeps the webview below the status bar so the header is not trapped off-screen.
+  appleWebApp: { capable: true, statusBarStyle: "black", title: "Brilla" },
   icons: {
     icon: icons,
     apple: [{ url: `/icons/apple-touch-icon.png?${iconVersion}`, sizes: "180x180", type: "image/png" }],

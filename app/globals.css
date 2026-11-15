@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 html {
-  /* Keep the PWA under the notch while leaving room for the home indicator. */
   min-height: 100%;
   min-height: 100dvh;
 }
@@ -14,25 +13,30 @@ body {
   min-height: 100%;
   min-height: 100dvh;
   overflow-x: hidden;
+  padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /*
- * Sticky header clears the status bar / Dynamic Island when viewport-fit=cover.
- * Extra 0.5rem below the inset keeps controls out of the iOS tap dead-zone.
- * Solid background (no backdrop-filter) — Safari can swallow taps through blur.
+ * Sticky header must sit *below* the status bar.
+ * top: env(safe-area-inset-top) keeps sticky from pinning under the notch
+ * (you cannot scroll a sticky bar into view once it is stuck at layout y=0).
+ * constant() covers older iOS; max() keeps a floor when inset reports 0.
  */
 .safe-header {
-  padding-top: calc(env(safe-area-inset-top, 0px) + 0.75rem);
-  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  /* Stick below the inset, not under the status bar at layout y=0. */
+  top: constant(safe-area-inset-top);
+  top: env(safe-area-inset-top, 0px);
+  padding-top: 0.75rem;
+  padding-right: max(1rem, constant(safe-area-inset-right), env(safe-area-inset-right, 0px));
   padding-bottom: 0.75rem;
-  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-left: max(1rem, constant(safe-area-inset-left), env(safe-area-inset-left, 0px));
 }
 
 @media (min-width: 1024px) {
   .safe-header {
-    padding-right: max(2rem, env(safe-area-inset-right, 0px));
-    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+    padding-right: max(2rem, constant(safe-area-inset-right), env(safe-area-inset-right, 0px));
+    padding-left: max(2rem, constant(safe-area-inset-left), env(safe-area-inset-left, 0px));
   }
 }
 
