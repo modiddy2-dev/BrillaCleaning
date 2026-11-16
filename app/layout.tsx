@@ -31,13 +31,15 @@ export const viewport: Viewport = {
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
+  // cover + translucent status bar was drawing the header under the notch.
+  // Keep cover for home-indicator insets; opaque statusBarStyle handles the top.
   viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${cinzel.variable} ${jakarta.variable} min-h-screen bg-dark-base font-sans text-slate-100 antialiased selection:bg-brand-500 selection:text-black`}>
+    <html lang="en" className="h-auto">
+      <body className={`${cinzel.variable} ${jakarta.variable} min-h-dvh bg-dark-base font-sans text-slate-100 antialiased selection:bg-brand-500 selection:text-black`}>
         <ServiceWorker />
         {children}
       </body>

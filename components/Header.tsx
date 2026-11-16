@@ -6,7 +6,12 @@ import type { Lang } from "@/lib/rules";
 export function Header({ lang, eyebrow, logoutLabel }: { lang: Lang; eyebrow?: string; logoutLabel?: string }) {
   return (
     <>
-      <header className="safe-header sticky z-50 border-b border-dark-border bg-dark-surface">
+      {/*
+        Not sticky: a sticky/fixed bar at top:0 sits under the iPhone status bar
+        at scrollY=0 and can never be scrolled into view. Static header + body
+        safe-area padding keeps the whole chrome reachable and the page scrollable.
+      */}
+      <header className="app-header relative z-50 border-b border-dark-border bg-dark-surface">
         <div className="mx-auto flex max-w-7xl items-start justify-between gap-3">
           <div className="min-w-0">
             <BrillaLockup />
@@ -22,11 +27,6 @@ export function Header({ lang, eyebrow, logoutLabel }: { lang: Lang; eyebrow?: s
           </div>
         </div>
       </header>
-      {/*
-        Mobile Log out lives in normal document flow (not sticky).
-        If the sticky bar is still clipped by the status bar, this stays on-screen
-        and scrolls with the page — no need to scroll "up past zero".
-      */}
       {logoutLabel ? (
         <div className="border-b border-dark-border bg-dark-surface px-4 py-3 sm:hidden">
           <div className="mx-auto max-w-7xl">

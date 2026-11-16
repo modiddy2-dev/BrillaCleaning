@@ -2,41 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Phone / home-screen layout:
+ * - Do not lock html/body height (that blocks scrolling).
+ * - Push content below the status bar with safe-area padding.
+ * - Header is NOT sticky, so nothing gets trapped above scrollY=0.
+ */
 html {
   min-height: 100%;
-  min-height: 100dvh;
+  overflow-x: clip;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
 
 body {
   background: #0c0f17;
   color: #f1f5f9;
   min-height: 100%;
-  min-height: 100dvh;
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Top inset: older iOS needs constant(); env() for newer. */
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-right: constant(safe-area-inset-right);
+  padding-right: env(safe-area-inset-right, 0px);
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: constant(safe-area-inset-left);
+  padding-left: env(safe-area-inset-left, 0px);
 }
 
-/*
- * Sticky header must sit *below* the status bar.
- * top: env(safe-area-inset-top) keeps sticky from pinning under the notch
- * (you cannot scroll a sticky bar into view once it is stuck at layout y=0).
- * constant() covers older iOS; max() keeps a floor when inset reports 0.
- */
-.safe-header {
-  /* Stick below the inset, not under the status bar at layout y=0. */
-  top: constant(safe-area-inset-top);
-  top: env(safe-area-inset-top, 0px);
+/* Home-screen PWA: if safe-area reports 0, still clear a typical status bar. */
+@media all and (display-mode: standalone) {
+  body {
+    padding-top: max(47px, constant(safe-area-inset-top), env(safe-area-inset-top, 0px));
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  @media all and (display-mode: standalone) {
+    body {
+      padding-top: max(47px, constant(safe-area-inset-top), env(safe-area-inset-top, 0px));
+    }
+  }
+}
+
+.app-header {
   padding-top: 0.75rem;
-  padding-right: max(1rem, constant(safe-area-inset-right), env(safe-area-inset-right, 0px));
+  padding-right: 1rem;
   padding-bottom: 0.75rem;
-  padding-left: max(1rem, constant(safe-area-inset-left), env(safe-area-inset-left, 0px));
+  padding-left: 1rem;
 }
 
 @media (min-width: 1024px) {
-  .safe-header {
-    padding-right: max(2rem, constant(safe-area-inset-right), env(safe-area-inset-right, 0px));
-    padding-left: max(2rem, constant(safe-area-inset-left), env(safe-area-inset-left, 0px));
+  .app-header {
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
 }
 
