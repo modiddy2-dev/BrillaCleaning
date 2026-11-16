@@ -38,8 +38,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-auto">
-      <body className={`${cinzel.variable} ${jakarta.variable} min-h-dvh bg-dark-base font-sans text-slate-100 antialiased selection:bg-brand-500 selection:text-black`}>
+    <html lang="en">
+      <body className={`${cinzel.variable} ${jakarta.variable} bg-dark-base font-sans text-slate-100 antialiased selection:bg-brand-500 selection:text-black`}>
         <ServiceWorker />
         {children}
       </body>

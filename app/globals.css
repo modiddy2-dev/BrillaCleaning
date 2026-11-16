@@ -3,27 +3,20 @@
 @tailwind utilities;
 
 /*
- * Phone / home-screen layout:
- * - Do not lock html/body height (that blocks scrolling).
- * - Push content below the status bar with safe-area padding.
- * - Header is NOT sticky, so nothing gets trapped above scrollY=0.
+ * Only ONE scroll container (the document). Putting overflow-y on both
+ * html and body nests scrollers and on iOS you can scroll down but never
+ * rubber-band/scroll back up to the true top.
  */
 html {
-  min-height: 100%;
-  overflow-x: clip;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
+  /* no overflow / height lock here */
 }
 
 body {
   background: #0c0f17;
   color: #f1f5f9;
-  min-height: 100%;
+  min-height: 100dvh;
   overflow-x: clip;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  /* Top inset: older iOS needs constant(); env() for newer. */
+  /* Top safe area — constant() for old iOS, env() for new */
   padding-top: constant(safe-area-inset-top);
   padding-top: env(safe-area-inset-top, 0px);
   padding-right: constant(safe-area-inset-right);
@@ -34,26 +27,37 @@ body {
   padding-left: env(safe-area-inset-left, 0px);
 }
 
-/* Home-screen PWA: if safe-area reports 0, still clear a typical status bar. */
+/* Home-screen: always clear a status-bar-sized band if inset is 0. */
 @media all and (display-mode: standalone) {
   body {
-    padding-top: max(47px, constant(safe-area-inset-top), env(safe-area-inset-top, 0px));
+    padding-top: max(59px, constant(safe-area-inset-top), env(safe-area-inset-top, 0px));
   }
 }
 
 @supports (-webkit-touch-callout: none) {
   @media all and (display-mode: standalone) {
     body {
-      padding-top: max(47px, constant(safe-area-inset-top), env(safe-area-inset-top, 0px));
+      padding-top: max(59px, constant(safe-area-inset-top), env(safe-area-inset-top, 0px));
     }
   }
 }
 
+/* Visible spacer matching header so the status-bar band isn't empty/confusing. */
+.app-top-gutter {
+  display: none;
+  background: #141a29;
+}
+
+@media all and (display-mode: standalone) {
+  .app-top-gutter {
+    display: block;
+    height: 0;
+    /* gutters are via body padding; keep class for future hooks */
+  }
+}
+
 .app-header {
-  padding-top: 0.75rem;
-  padding-right: 1rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1rem;
+  padding: 0.75rem 1rem;
 }
 
 @media (min-width: 1024px) {
