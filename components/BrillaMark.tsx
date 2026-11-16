@@ -44,8 +44,11 @@ export function BrillaMark({ className = "w-full max-w-md" }: { className?: stri
 export function BrillaLockup() {
   return (
     <div className="flex items-center gap-3">
-      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 via-brand-500 to-brand-700 text-black shadow-lg shadow-brand-500/20">
-        <Spark />
+      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-dark-border bg-dark-base text-brand-500 shadow-lg shadow-black/30">
+        <Spark className="h-6 w-6" />
+        <span className="pointer-events-none absolute right-1 top-1 h-2 w-2 text-brand-400" aria-hidden="true">
+          <Spark className="h-2 w-2" />
+        </span>
       </div>
       <div>
         <div className="font-serif text-base font-bold leading-none tracking-[0.18em] text-white sm:text-lg sm:tracking-[0.28em]">BRILLA</div>

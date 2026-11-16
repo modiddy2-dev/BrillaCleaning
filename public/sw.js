@@ -1,5 +1,12 @@
-const CACHE = "brilla-shell-v1";
-const SHELL = ["/", "/owner/login", "/cleaner/login", "/manifest.webmanifest", "/owner.webmanifest", "/cleaner.webmanifest", "/icons/icon-192.png", "/icons/icon-512.png", "/icons/apple-touch-icon.png"];
+const CACHE = "brilla-shell-v4";
+const SHELL = [
+  "/manifest.webmanifest",
+  "/owner.webmanifest",
+  "/cleaner.webmanifest",
+  "/icons/icon-192.png?v2",
+  "/icons/icon-512.png?v2",
+  "/icons/apple-touch-icon.png?v2",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -26,22 +33,23 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
   if (url.pathname.startsWith("/api/")) return;
 
+  // Always network-first for pages so layout fixes are not stuck behind a cached shell.
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
+        .then((response) => response)
+        .catch(async () => {
+          const cached = await caches.match(request);
+          if (cached) return cached;
+          if (url.pathname.startsWith("/owner")) return (await caches.match("/owner/login")) || Response.error();
+          if (url.pathname.startsWith("/cleaner")) return (await caches.match("/cleaner/login")) || Response.error();
+          return (await caches.match("/")) || Response.error();
+        }),
+    );
+    return;
+  }
+
   event.respondWith(
-    fetch(request)
-      .then((response) => {
-        if (response.ok && request.mode === "navigate") {
-          const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put(request, copy));
-        }
-        return response;
-      })
-      .catch(async () => {
-        const cached = await caches.match(request);
-        if (cached) return cached;
-        if (request.mode !== "navigate") return Response.error();
-        if (url.pathname.startsWith("/owner")) return (await caches.match("/owner/login")) || Response.error();
-        if (url.pathname.startsWith("/cleaner")) return (await caches.match("/cleaner/login")) || Response.error();
-        return (await caches.match("/")) || Response.error();
-      }),
+    fetch(request).catch(async () => (await caches.match(request)) || Response.error()),
   );
 });

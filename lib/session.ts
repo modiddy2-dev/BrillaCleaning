@@ -7,6 +7,17 @@ const SESSION_COOKIE = "brilla_session";
 const LANG_COOKIE = "brilla_lang";
 const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000;
 
+/** Must match on set and clear or browsers keep the cookie (common on HTTPS PWAs). */
+function sessionCookieOptions(expires?: Date) {
+  return {
+    httpOnly: true,
+    sameSite: "lax" as const,
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    ...(expires ? { expires } : {}),
+  };
+}
+
 export type AppSession = {
   role: "owner" | "cleaner";
   userKey: string;
@@ -50,23 +61,20 @@ export async function createSession(input: { role: "owner" | "cleaner"; userKey:
     create: { userKey: input.userKey, lang: input.lang },
   });
   const jar = await cookies();
-  jar.set(SESSION_COOKIE, token, {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    expires: expiresAt,
-  });
+  jar.set(SESSION_COOKIE, token, sessionCookieOptions(expiresAt));
 }
 
 export async function destroySession(): Promise<void> {
   const jar = await cookies();
   const token = jar.get(SESSION_COOKIE)?.value;
   if (token) {
-    await prisma.session.deleteMany({ where: { tokenHash: sessionTokenHash(token) } });
+    await prisma.session.deleteMany({ where: { tokenHash: sessionTokenHash(token) } }).catch(() => undefined);
   }
-  jar.set(SESSION_COOKIE, "", { httpOnly: true, path: "/", maxAge: 0 });
+  // Match create attributes exactly, or Safari/Chrome keep the live cookie.
+  jar.set(SESSION_COOKIE, "", { ...sessionCookieOptions(new Date(0)), maxAge: 0 });
 }
+
+export { SESSION_COOKIE, sessionCookieOptions };
 
 export async function setLanguage(lang: Lang): Promise<void> {
   const jar = await cookies();
