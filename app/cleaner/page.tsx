@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Header } from "@/components/Header";
 import { InstallPrompt } from "@/components/InstallPrompt";
+import { LogoutFooter } from "@/components/LogoutFooter";
 import { PasskeySetup } from "@/components/PasskeyControls";
 import { CleanerBoard } from "@/components/cleaner/CleanerBoard";
 import { copy } from "@/lib/i18n";
@@ -38,6 +39,7 @@ export default async function CleanerPage({ searchParams }: { searchParams: Prom
           </div>
         }
       />
+      <LogoutFooter label={text.logout} />
     </>
   );
 }
