@@ -6,7 +6,13 @@ body {
   background: #0c0f17;
   color: #f1f5f9;
   min-height: 100vh;
-  overflow-x: hidden;
+  /* clip avoids the sticky-header breakage that overflow-x:hidden causes on iOS */
+  overflow-x: clip;
+}
+
+/* Room for the fixed bottom logout bar + home indicator */
+body:has([data-logout-footer]) {
+  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 .glass-panel {
