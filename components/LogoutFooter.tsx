@@ -1,6 +1,7 @@
 import { LogoutButton } from "./LogoutButton";
+import { ghostBtn } from "./ui";
 
-/** Always-reachable logout strip for large phones / Dynamic Island layouts. */
+/** Fixed bottom logout for owner and cleaner — always visible while scrolling. */
 export function LogoutFooter({ label }: { label: string }) {
   return (
     <div
@@ -8,7 +9,7 @@ export function LogoutFooter({ label }: { label: string }) {
       data-logout-footer
     >
       <div className="mx-auto w-full max-w-7xl">
-        <LogoutButton label={label} className="flex min-h-12 w-full items-center justify-center" />
+        <LogoutButton label={label} className={`${ghostBtn} w-full`} />
       </div>
     </div>
   );

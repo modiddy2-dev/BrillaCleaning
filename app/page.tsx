@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { BrillaMark } from "@/components/BrillaMark";
 import { Header } from "@/components/Header";
-import { LogoutFooter } from "@/components/LogoutFooter";
 import { copy } from "@/lib/i18n";
 import { getSession, readLangCookie } from "@/lib/session";
 
@@ -22,7 +21,7 @@ export default async function HomePage() {
   const text = copy(lang);
   return (
     <>
-      <Header lang={lang} eyebrow={text.brandCity} logoutLabel={role ? text.logout : undefined} />
+      <Header lang={lang} eyebrow={text.brandCity} />
       <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-8">
         <BrillaMark />
         <div className="rounded-3xl border border-dark-border p-6 glass-panel sm:p-8">
@@ -42,7 +41,6 @@ export default async function HomePage() {
           </Link>
         </div>
       </main>
-      {role ? <LogoutFooter label={text.logout} /> : null}
     </>
   );
 }
