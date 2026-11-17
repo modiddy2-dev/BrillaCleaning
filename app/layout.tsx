@@ -17,7 +17,8 @@ export const metadata: Metadata = {
   applicationName: "Brilla Cleaning",
   manifest: "/manifest.webmanifest",
   robots: { index: false, follow: false },
-  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Brilla" },
+  // Opaque status bar keeps the header below the notch on installed PWAs.
+  appleWebApp: { capable: true, statusBarStyle: "black", title: "Brilla" },
   icons: { icon: icons, apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
 };
 

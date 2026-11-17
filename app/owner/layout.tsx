@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "Brilla Owner",
   applicationName: "Brilla Cleaning",
   manifest: "/owner.webmanifest",
-  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Brilla Owner" },
+  appleWebApp: { capable: true, statusBarStyle: "black", title: "Brilla Owner" },
 };
 
 export default function OwnerLayout({ children }: { children: React.ReactNode }) {
